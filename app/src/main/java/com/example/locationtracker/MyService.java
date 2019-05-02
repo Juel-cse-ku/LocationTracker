@@ -34,11 +34,21 @@ public class MyService extends Service {
 
         startForeground(1, notification);
 
+
+
+
+        stopSelf();
+
         return START_REDELIVER_INTENT;
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }
