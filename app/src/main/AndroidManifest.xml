@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -23,6 +24,13 @@
             </intent-filter>
         </activity>
         <service android:name=".MyService" />
+
+        <receiver android:name=".StartAppAfterBoot">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
