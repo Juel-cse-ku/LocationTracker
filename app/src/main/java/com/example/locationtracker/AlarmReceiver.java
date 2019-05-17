@@ -1,6 +1,7 @@
 package com.example.locationtracker;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,8 +24,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AlarmReceiver extends BroadcastReceiver {
-//    public static final String API_URL = "http://control.jahajibd.com/api_req/Ship/GpsTracking";
-    public static final String API_URL = "http://192.168.0.122/shipTracking/post.php";
+    public static final String API_URL = "http://control.jahajibd.com/api_req/Ship/GpsTracking";
+//    public static final String API_URL = "http://192.168.0.105/shipTracking/post.php";
     private String latitude;
     private String longitude;
     private String heading;
@@ -51,8 +52,8 @@ public class AlarmReceiver extends BroadcastReceiver {
             Toast.makeText(context, "Location Not Received", Toast.LENGTH_LONG).show();
         }
 
-        Heading h = new Heading(context);
-        heading = h.getHeading();
+//        Heading h = new Heading(context);
+//        heading = h.getHeading();
 
 
         postToServer(API_URL, context, latitude, longitude);
@@ -72,9 +73,10 @@ public class AlarmReceiver extends BroadcastReceiver {
             }
         }){
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
 
+                @SuppressLint("HardwareIds")
                 String androidId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID); //"a39676ad6a299538"
 
 //                String m_androidId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -83,7 +85,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                 params.put("serial", androidId);
                 params.put("lat", latitude);
                 params.put("lng", longitude);
-                params.put("heading", heading);
+                params.put("heading", "H");
 
                 return params;
             }

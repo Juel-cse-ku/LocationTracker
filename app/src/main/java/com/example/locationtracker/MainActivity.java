@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textView = (TextView) findViewById(R.id.tv_location);
 
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
 
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
        Calendar calendar = Calendar.getInstance();
 //       calendar.add(Calendar.SECOND, 15);
 //       long time = System.currentTimeMillis();
-       alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1, pendingIntent);
+       alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 30000, pendingIntent);
 //       alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1500, pendingIntent);
    }
 
