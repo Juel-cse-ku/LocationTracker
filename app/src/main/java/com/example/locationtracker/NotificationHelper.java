@@ -5,9 +5,12 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+
+/*
+* Creating Notification Channel
+* */
 
 public class NotificationHelper extends ContextWrapper {
     public static final String channelID = "notChannel";
@@ -33,7 +36,6 @@ public class NotificationHelper extends ContextWrapper {
         if (notificationManager == null) {
             notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         }
-
         return notificationManager;
     }
 
@@ -42,6 +44,6 @@ public class NotificationHelper extends ContextWrapper {
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle("Ship Tracking")
                 .setContentText("Location Sent to Server...")
-                .setSmallIcon(R.drawable.ic_sync_black_24dp);
+                .setSmallIcon(R.drawable.ic_directions_boat_black_24dp);
     }
 }

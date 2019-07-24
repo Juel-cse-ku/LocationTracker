@@ -5,8 +5,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 
+// Creating Foreground Notification
 public class App extends Application {
-
     public static final String CHANNEL_ID = "ForegroundService";
 
     @Override

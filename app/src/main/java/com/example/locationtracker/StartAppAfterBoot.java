@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+// Restart app after phone rebooting
 public class StartAppAfterBoot extends BroadcastReceiver {
 
     @Override

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
+// Getting Current Location
 public class GPSTracker implements LocationListener {
     private Context context;
 
@@ -18,6 +19,7 @@ public class GPSTracker implements LocationListener {
     }
 
     Location getLocation() {
+        // permission for location access
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(context, "Location Permission Not Granted", Toast.LENGTH_SHORT).show();
             return null;
@@ -27,7 +29,7 @@ public class GPSTracker implements LocationListener {
         boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         if (isGPSEnabled) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 6000, 10, this);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, this);
             Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             return location;
         }else {
@@ -35,7 +37,6 @@ public class GPSTracker implements LocationListener {
         }
         return null;
     }
-
 
     @Override
     public void onLocationChanged(Location location) {
