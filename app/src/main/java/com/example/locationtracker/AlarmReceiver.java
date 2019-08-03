@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AlarmReceiver extends BroadcastReceiver implements LocationListener {
-    public static final String API_URL = "http://admin.jahajibd.com/api_req/Ship/GpsTracking";
+    public static final String API_URL = "https://control.jahajibd.com/api_req/Ship/GpsTracking";
 //    public static final String API_URL = "http://192.168.0.102/shipTracking/post.php";
     private String latitude = "";
     private String longitude = "";
